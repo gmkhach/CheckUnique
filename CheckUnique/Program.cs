@@ -1,4 +1,9 @@
-﻿using System;
+﻿/**
+ * Write a function that accepts a string, and returns whether the characters are all unique
+ * ie: "hello" will return false, and "plant" will return true
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,30 +15,50 @@ namespace CheckUnique
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a string of characters\n\n>>> ");
-            string input = Console.ReadLine();
-            int len = input.Length;
-            char[] array = input.ToCharArray();
-            bool unique = true;
-            for (int i = 0; i < len -1; i++)
+            do
             {
-                for(int j = i + 1; j < len; j++)
+                try
                 {
-                    if(array[i] == array[j])
+                    Console.Write("Enter a string of characters\n\n>>> ");
+                    string input = Console.ReadLine();
+                    if (IsUnique(input))
+                    {
+                        Console.WriteLine("\nAll characters in the string are unique.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nThe string contains doubles.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                Console.Write("\nPress Enter to try another string...");
+                Console.ReadLine();
+                Console.Clear();
+            } while (true);
+        }
+
+        static bool IsUnique(string input)
+        {
+            bool unique = true;
+            int len = input.Length;
+            // spliting the string into a char array so we can loop through it
+            char[] array = input.ToCharArray();
+            // using nested loop to compare each character with every other character in the string.
+            for (int i = 0; i < len - 1; i++)
+            {
+                for (int j = i + 1; j < len; j++)
+                {
+                    if (array[i] == array[j])
                     {
                         unique = false;
                         break;
                     }
                 }
             }
-            if (unique)
-            {
-                Console.WriteLine("\nAll characters in the string are unique.");
-            }
-            else
-            {
-                Console.WriteLine("\nThe string contains doubles.");
-            }
+            return unique;
         }
     }
 }
