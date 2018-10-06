@@ -35,7 +35,6 @@ namespace CheckUnique
 
         static bool IsUnique(string input)
         {
-            bool unique = true;
             int len = input.Length;
             // spliting the string into a char array so we can loop through it
             char[] array = input.ToCharArray();
@@ -44,10 +43,13 @@ namespace CheckUnique
             {
                 for (int j = i + 1; j < len; j++)
                 {
-                    unique = array[i] == array[j] ? false : true;
+                    if (array[i] == array[j])
+                    {
+                        return false;
+                    }
                 }
             }
-            return unique;
+            return true;
         }
     }
 }
