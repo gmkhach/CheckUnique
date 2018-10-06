@@ -21,14 +21,7 @@ namespace CheckUnique
                 {
                     Console.Write("Enter a string of characters\n\n>>> ");
                     string input = Console.ReadLine();
-                    if (IsUnique(input))
-                    {
-                        Console.WriteLine("\nAll characters in the string are unique.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nThe string contains doubles.");
-                    }
+                    Console.WriteLine("\n" + (IsUnique(input) ? "All characters in the string are unique." : "The String contains doubles."));
                 }
                 catch (Exception ex)
                 {
@@ -51,11 +44,7 @@ namespace CheckUnique
             {
                 for (int j = i + 1; j < len; j++)
                 {
-                    if (array[i] == array[j])
-                    {
-                        unique = false;
-                        break;
-                    }
+                    unique = array[i] == array[j] ? false : true;
                 }
             }
             return unique;
