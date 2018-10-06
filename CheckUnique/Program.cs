@@ -35,15 +35,12 @@ namespace CheckUnique
 
         static bool IsUnique(string input)
         {
-            int len = input.Length;
-            // spliting the string into a char array so we can loop through it
-            char[] array = input.ToCharArray();
             // using nested loop to compare each character with every other character in the string.
-            for (int i = 0; i < len - 1; i++)
+            for (int i = 0; i < input.Length - 1; i++)
             {
-                for (int j = i + 1; j < len; j++)
+                for (int j = i + 1; j < input.Length; j++)
                 {
-                    if (array[i] == array[j])
+                    if (input[i] == input[j])
                     {
                         return false;
                     }
